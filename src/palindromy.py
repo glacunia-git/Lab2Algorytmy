@@ -10,9 +10,14 @@ def czy_palindrom(slowo):
 
     return True
 
-tekst = input("Podaj słowo: ")
+with open("../data/palindromy.txt", "r") as plik:
+    for wiersz in plik:
+        tekst = wiersz.strip()
 
-if czy_palindrom(tekst):
-    print("To jest palindrom")
-else:
-    print("To nie jest palindrom")
+        if tekst == "":
+            continue
+
+        if czy_palindrom(tekst):
+            print(f"{tekst} -> PALINDROM")
+        else:
+            print(f"{tekst} -> NIE palindrom")
